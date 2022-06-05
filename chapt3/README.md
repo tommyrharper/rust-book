@@ -99,3 +99,9 @@ let y = {
 
 println!("The value of y is: {}", y); // prints 4
 ```
+
+## Loops
+
+- loop
+- while
+- for
