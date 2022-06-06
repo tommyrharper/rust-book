@@ -1,4 +1,4 @@
-# Chapt 1
+# Chapt 1 - Getting Started
 
 ```bash
 rustc main.rs

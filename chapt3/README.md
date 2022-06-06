@@ -1,4 +1,4 @@
-# Chapt 3
+# Chapt 3 - Common Programming Concepts
 
 ## Constants
 
