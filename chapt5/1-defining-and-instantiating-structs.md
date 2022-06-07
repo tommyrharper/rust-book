@@ -160,3 +160,31 @@ error: could not compile `structs` due to 2 previous errors
 ```
 
 Later on you will learn how to fix this error using lifetimes, but for now we will just give the struct ownership of all of it's data using owned types like `String` instead of refernces like `&str`.
+
+## Printing structs
+
+- For debugging purposes you can do the following:
+```rust
+#[derive(Debug)]
+struct User {
+    username: String,
+    email: String,
+    age: i32
+}
+
+fn main() {
+    let user1 = User {
+        username: String::from("tom"),
+        email: String::from("tom@tom.com"),
+        age: 25,
+    };
+
+    println!("user1: {:?}", user1);
+    println!("user1: {:#?}", user1); // {:#?} pretty prints
+
+    dbg!(&user1);
+}
+```
+Note the `#[derive(Debug)]`, this allows you to print the struct.
+
+You can also use `dbg!`. This takes ownership of the expression, prints it with file and line number, and returns ownership.
