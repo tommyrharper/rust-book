@@ -1,3 +1,5 @@
+use crate::front_of_house::hosting;
+
 fn update_waitlist() {}
 
 mod front_of_house {
@@ -41,6 +43,9 @@ mod back_of_house {
 
 // pub means this is part of our public API
 pub fn eat_at_restaurant() {
+    // Using the use keyword
+    hosting::add_to_waitlist();
+
     // Absolute path
     crate::front_of_house::hosting::add_to_waitlist();
 
