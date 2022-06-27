@@ -19,7 +19,7 @@ mod tests {
     #[test]
     fn with_custom_message() {
         let thing = String::from("beans");
-        assert!(false, "this test has a custom message full of {}", thing);
+        assert!(true, "this test has a custom message full of {}", thing);
     }
 
     #[test]
