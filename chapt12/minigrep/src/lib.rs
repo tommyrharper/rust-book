@@ -21,13 +21,35 @@ impl Config {
 pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
     let contents = fs::read_to_string(config.filename)?;
 
-    println!("With text: \n{}", contents);
-
-    if contents.contains(&config.query) {
-        println!("------ {} found! -------", config.query);
-    } else {
-        println!("------ {} not found! -------", config.query);
+    for el in search(&config.query, &contents) {
+        println!("Found a line: {}", el);
     }
 
     Ok(())
+}
+
+pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
+    let mut res = vec![];
+    for line in contents.lines() {
+        if line.contains(query) {
+            res.push(line);
+        }
+    }
+    res
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn one_result() {
+        let query = "duct";
+        let contents = "\
+Rust:
+safe, fast, productive.
+Pick three.";
+
+        assert_eq!(vec!["safe, fast, productive."], search(query, contents));
+    }
 }
