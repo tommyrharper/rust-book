@@ -40,7 +40,7 @@ pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
     };
 
     for el in results {
-        println!("Found a line: {}", el);
+        println!("{}", el);
     }
 
     Ok(())
