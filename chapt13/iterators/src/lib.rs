@@ -37,4 +37,17 @@ mod tests {
         assert_eq!(counter.next(), Some(5));
         assert_eq!(counter.next(), None);
     }
+
+    #[test]
+    fn using_other_iterator_trait_methods() {
+        let sum: u32 = Counter::new()
+            .zip(Counter::new().skip(1))
+            // (1, 2), (2, 3), (3, 4), (4, 5)
+            .map(|(a, b)| a * b)
+            //  2, 6, 12, 20
+            .filter(|x| x % 3 == 0)
+            // 6, 12
+            .sum();
+        assert_eq!(18, sum);
+    }
 }
