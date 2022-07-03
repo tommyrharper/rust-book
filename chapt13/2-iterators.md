@@ -168,6 +168,3 @@ mod tests {
 ```
 
 - Notice the use of `into_iter` -> we are creating an iterator that takes ownership of the vector.
-
-## Creating your own Iterator with the `Iterator` Trait
-

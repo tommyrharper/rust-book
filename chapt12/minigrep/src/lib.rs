@@ -1,3 +1,6 @@
+//! # Minigrep
+//!
+//! `minigrep` is my version of `grep`. It uses rust to search for strings in files! 🐙
 use std::env;
 use std::error::Error;
 use std::fs;
@@ -28,6 +31,10 @@ impl Config {
     }
 }
 
+/// # Run is the shiz
+///
+/// Pass in a config struct, and it will do the magic.
+/// Boom! Done. 😀
 pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
     let contents = fs::read_to_string(config.filename)?;
 
@@ -44,6 +51,22 @@ pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
     Ok(())
 }
 
+/// Returns a list of lines that contain a given query
+///
+/// # Examples
+///
+/// ```
+/// use minigrep::search;
+///
+/// let query = "duct";
+/// let contents = "\
+/// Rust:
+/// safe, fast, productive.
+/// Pick three.
+/// Duct tape.";
+///
+/// assert_eq!(vec!["safe, fast, productive."], search(query, contents));
+/// ```
 pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
     contents.lines().filter(|x| x.contains(query)).collect()
 }
